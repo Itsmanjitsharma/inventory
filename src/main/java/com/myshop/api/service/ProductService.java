@@ -62,7 +62,7 @@ public class ProductService {
             }else{
                 productAdded =  productRepository.save(proudct3);
             }
-            productHistories.add(new ProductHistory(productAdded.getProductid(),productAdded.getName() ,sqlDate, productAdded.getQuantity(), productAdded.getPurchagePrice()));
+            productHistories.add(new ProductHistory(productAdded.getProductid(),productAdded.getName() ,sqlDate, productAdded.getQuantity(),productAdded.getSellPrice(),productAdded.getPurchagePrice(),productAdded.getPgroup()));
             saveProduct.add(productAdded);
         }
         productHistoryRepository.saveAll(productHistories);
@@ -79,6 +79,8 @@ public class ProductService {
                     existingProduct.setName(product.getName());
                     existingProduct.setDescription(product.getDescription());
                     existingProduct.setPurchagePrice(product.getPurchagePrice());
+                    existingProduct.setSellPrice(product.getSellPrice());
+                    existingProduct.setPgroup(product.getPgroup());
                     existingProduct.setQuantity(existingProduct.getQuantity() + product.getQuantity());
                     return productRepository.save(existingProduct);
                 })

@@ -6,7 +6,22 @@
 spring:
   application:
     name: inventory
+  config:
+    import: configserver:http://inventorycloudconfiguration:9999
+  cloud:
+    config:
+      uri:  http://inventorycloudconfiguration:9999
+      refresh:
+        enabled: true
+        rate: 30
+    gateway:
+      routes:
+        - id: INVENTORY
+          uri: lb://INVENTORY
+          predicates:
+           -  Path=/**
 
+   
 tracing:
   url: http://localhost:4318/v1/traces
 
@@ -18,4 +33,16 @@ management:
 logging:
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://serviceregistery:8761/eureka/  # URL of the Eureka Server
+    register-with-eureka: true  # Whether this client should register with Eureka
+    fetch-registry: true  # Whether this client should fetch the registry of services
+  instance:
+    prefer-ip-address: true  # Register using the IP address
+
+
+
     

@@ -23,6 +23,9 @@ public class Product {
     @NotBlank(message = "Product name is required")
     private String name;
 
+    @NotBlank(message = "Product name is required")
+    private String pgroup;
+
     @NotBlank(message = "Description name is required")
     private String description;
 
@@ -32,15 +35,21 @@ public class Product {
     @NotBlank(message = "Sell Price name is required")
     private Double sellPrice;
 
-    public Product(String name, String description, Double purchagePrice, Double sellPrice) {
+
+    public Product(String name, String description, Double purchagePrice, Double sellPrice,String pgroup,String imageUrl) {
         this.name = name;
         this.description = description;
         this.purchagePrice = purchagePrice;
         this.sellPrice = sellPrice;
+        this.pgroup = pgroup;
+        this.imageUrl = imageUrl;
     }
 
     @NotBlank(message = "Quantity name is required")
     private int quantity;
+
+    @NotBlank(message = "Product Image is required")
+    private String imageUrl;
 
     
 }

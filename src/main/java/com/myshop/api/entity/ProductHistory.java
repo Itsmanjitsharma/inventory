@@ -21,14 +21,20 @@ public class ProductHistory {
     String name;
     Date updateDate;
     int quantity;
-    double price;
+    double sellPrice;
+    double purchagePrice;
+    String pgroup;
+    
 
-    public ProductHistory(long productId, String name, Date updateDate, int quantity, double price) {
+    public ProductHistory(long productId, String name, Date updateDate, int quantity, double sellPrice,
+    double purchagePrice,String pgroup) {
         this.productId = productId;
         this.name = name;
         this.updateDate = updateDate;
         this.quantity = quantity;
-        this.price = price;
+        this.sellPrice = sellPrice;
+        this.purchagePrice = purchagePrice;
+        this.pgroup = pgroup;
     }
        
 }
