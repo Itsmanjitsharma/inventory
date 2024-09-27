@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductDto {
 
-    private Long productId;
+    private Long productid;
     
     @NotBlank(message = "Product name is required")
     private String name;
@@ -20,7 +20,7 @@ public class ProductDto {
     private String description;
 
     @NotBlank(message = "Price name is required")
-    private Double price;
+    private Double sellPrice;
 
     @NotBlank(message = "Quantity name is required")
     private int quantity;

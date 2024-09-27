@@ -43,14 +43,14 @@ public class BillingService {
         java.sql.Date sqlDate = java.sql.Date.valueOf(billDate);
         Billing billing = billingRepository.save(new Billing(sqlDate,amount));
         for (ProductDto productDto : bill.getProducts()) {
-            Product existingProduct = productService.getProductById(productDto.getProductId());
+            Product existingProduct = productService.getProductById(productDto.getProductid());
             if (existingProduct != null) {
                 if (existingProduct.getQuantity() >= productDto.getQuantity()) {
                     existingProduct.setQuantity(existingProduct.getQuantity() - productDto.getQuantity());
                     productService.updateProduct(existingProduct.getProductid(), existingProduct);
                     products.add(new ProductSales(productDto.getName(),
                                                   productDto.getQuantity(),
-                                                  productDto.getPrice(),
+                                                  productDto.getSellPrice(),
                                                   sqlDate,
                                                   billing.getBillId()));
                 } else {
@@ -81,9 +81,9 @@ public class BillingService {
             for (ProductSales productSale : productSales) {
                 if (productSale.getBillId() == billing.getBillId()) {
                     ProductDto productDto = new ProductDto();
-                    productDto.setProductId(productSale.getProduct_sale_id());
+                    productDto.setProductid(productSale.getProduct_sale_id());
                     productDto.setQuantity(productSale.getQuantity());
-                    productDto.setPrice(productSale.getPrice());
+                    productDto.setSellPrice(productSale.getPrice());
                     productDto.setName(productSale.getProductName());
                     productDtos.add(productDto);
                 }
