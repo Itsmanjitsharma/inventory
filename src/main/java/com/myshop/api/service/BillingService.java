@@ -47,7 +47,7 @@ public class BillingService {
             if (existingProduct != null) {
                 if (existingProduct.getQuantity() >= productDto.getQuantity()) {
                     existingProduct.setQuantity(existingProduct.getQuantity() - productDto.getQuantity());
-                    productService.updateProduct(existingProduct.getProductid(), existingProduct);
+                    productService.updateProductAfterBilling(existingProduct.getProductid(), existingProduct);
                     products.add(new ProductSales(productDto.getName(),
                                                   productDto.getQuantity(),
                                                   productDto.getSellPrice(),

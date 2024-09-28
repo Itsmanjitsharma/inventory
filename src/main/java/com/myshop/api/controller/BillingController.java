@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 @Slf4j
 @RestController
 @RequestMapping("/api/bills")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 public class BillingController {
     private static final Logger logger = LoggerFactory.getLogger(BillingController.class);
 

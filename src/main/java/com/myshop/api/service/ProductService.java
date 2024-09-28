@@ -86,6 +86,11 @@ public class ProductService {
                 })
                 .orElseThrow(() -> new ProductException("2001","Product not found"));
     }
+    public int updateProductAfterBilling(Long id, Product product) {
+        logger.info("Updating product id: {}", id);
+        fieldValidation(product);
+        return productRepository.updateQuantity(product.getQuantity(),id);
+    }
 
 
     public void deleteProduct(Long id) {
